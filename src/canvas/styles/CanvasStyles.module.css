@@ -1,0 +1,96 @@
+.styled-view {
+    width: 100vw;
+    height: 100vh;
+    background-color: #ADD1F5;
+}
+
+/* Sound toggle button */
+.sound-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(180deg, #FCD425 0%, #FFB800 100%);
+    border: 4px solid #FFFFFF;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #C08000;
+    transition: all 0.1s ease-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.sound-toggle:hover {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #C08000;
+}
+
+.sound-toggle:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 #C08000;
+}
+
+.sound-toggle:focus-visible {
+    outline: 3px solid #041661;
+    outline-offset: 4px;
+}
+
+
+/* Landscape orientation warning for mobile */
+.orientation-warning {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #ADD1F5;
+    z-index: 9999;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+}
+
+.orientation-warning h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #041661;
+}
+
+.orientation-warning p {
+    font-size: 1.2rem;
+    color: #041661;
+}
+
+/*  Mobile landscape adjustments */
+@media (max-width: 768px) and (orientation: landscape) {
+    .sound-toggle {
+        width: 50px;
+        height: 50px;
+        top: 15px;
+        right: 15px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1366px) and (orientation: landscape) {
+    .sound-toggle {
+        width: 80px;
+        height: 80px;
+        top: 15px;
+        right: 15px;
+    }
+}
+
+/* Show orientation warning on mobile portrait mode */
+@media (max-width: 1366px) and (orientation: portrait) {
+    .orientation-warning {
+        display: flex;
+    }
+
+    .intro-banner {
+        display: none;
+    }
+}
