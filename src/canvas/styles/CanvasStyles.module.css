@@ -94,3 +94,29 @@
         display: none;
     }
 }
+
+/* Hint text for jump interaction */
+.hint-text {
+    position: fixed;
+    bottom: 180px;
+    left: 20px;
+    z-index: 1000;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+    .hint-text {
+        bottom: 140px;
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 769px) {
+    .hint-text {
+        bottom: 40px;
+    }
+}

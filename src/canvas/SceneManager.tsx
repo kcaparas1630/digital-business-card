@@ -113,6 +113,9 @@ const SceneManager: React.FC = () => {
           <>
             <MobileJoystick onJoystickMove={handleJoystickMove} />
             <MobileJumpButton onJump={handleJump} />
+            <div className={styles["hint-text"]}>
+              Jump on buttons to interact
+            </div>
           </>
         )}
       </div>
