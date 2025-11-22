@@ -1,4 +1,4 @@
-import { Suspense, useRef, useState, useCallback } from "react";
+import { Suspense, useRef } from "react";
 import { Physics } from "@react-three/rapier";
 import { Sky } from "@react-three/drei";
 import { Group } from "three";
@@ -10,24 +10,16 @@ import Rocks from "../../models/background/Rocks";
 import StylizedGround from "../../models/background/Ground";
 import WorldBoundaries from "../../models/background/WorldBoundaries";
 import Flowers from "../../models/background/Flowers";
-import MobileJoystick from "../../controls/MobileJoystick";
-import MobileJumpButton from "../../controls/MobileJumpButton";
 import InteractiveButton from "../../models/interactive/InteractiveButton";
 import { INTERACTIVE_BUTTONS } from "../../constants/interactiveButtons";
 
-const StartingPointScene = () => {
+interface StartingPointSceneProps {
+  joystickInput?: { x: number; y: number };
+  jumpTrigger?: number;
+}
+
+const StartingPointScene = ({ joystickInput = { x: 0, y: 0 }, jumpTrigger = 0 }: StartingPointSceneProps) => {
   const modelRef = useRef<Group>(null);
-
-  const [joystickInput, setJoystickInput] = useState({ x: 0, y: 0 });
-  const [jumpTrigger, setJumpTrigger] = useState(0);
-
-  const handleJoystickMove = useCallback((x: number, y: number) => {
-    setJoystickInput({ x, y });
-  }, []);
-
-  const handleJump = useCallback(() => {
-    setJumpTrigger((prev) => prev + 1);
-  }, []);
 
   return (
     <>
@@ -94,10 +86,6 @@ const StartingPointScene = () => {
       <Flowers count={35} />
 
       <CameraController targetRef={modelRef} />
-
-      {/* Mobile controls overlay */}
-      <MobileJoystick onJoystickMove={handleJoystickMove} />
-      <MobileJumpButton onJump={handleJump} />
     </>
   );
 };
